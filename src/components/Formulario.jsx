@@ -1,18 +1,50 @@
 import React, { useEffect, useState} from 'react'
+import Error from './Error';
 
-
-const Formulario = () => {
+const Formulario = ({pacientes, setPacientes}) => {
     const [nombre, setNombre]           = useState('');
     const [propieatrio, setPropieatrio] = useState('');
     const [email, setEmail]             = useState('');
     const [fecha, setFecha]             = useState('');
     const [sintomas, setSintomas]       = useState('');
+    const [error, setError]             = useState(false);
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
+        /*
+        ** validacion del formulario
+        */
+        if ([ nombre, propieatrio, email, fecha, sintomas ].includes('')) {
+            setError(true);
+            return
+        }
 
+        /*
+        ** Objeto de paciente y añadiendo valores
+        ** del paciente al state de App.jsx
+        */
+        const objetoPaciente = {
+            nombre,
+            propieatrio,
+            email,
+            fecha,
+            sintomas
+        }
+        setPacientes([...pacientes, objetoPaciente]);
 
+        /*
+        ** Limpieza del formulario
+        */
+        setNombre('');
+        setPropieatrio('');
+        setEmail('');
+        setFecha('');
+        setSintomas('');
+        setError(false);
+    }
     return (
-        <div className='md:w-1/2 lg:w-2/5'>
+        <div className='md:w-1/2 lg:w-2/5 mx-5'>
 
             <h2 className='font-black text-3xl text-center'>
                 Seguimiento pacientes
@@ -25,7 +57,13 @@ const Formulario = () => {
                 </span>
             </p>
 
-            <form className='bg-white shadow-md rounded-lg py-10 px-5 mb-10'>
+            <form
+                className='bg-white shadow-md rounded-lg py-10 px-5 mb-10'
+                onSubmit={handleSubmit}
+            >
+                { error && (
+                    <Error mensaje='Todos los campos son obligatorios'/>
+                ) }
                 <div className='mb-5'>
                     <label htmlFor='mascota' className='block text-gray-700 uppercase font-bold'>
                         Nombre Mascota
