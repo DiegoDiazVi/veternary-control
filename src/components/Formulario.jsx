@@ -51,7 +51,7 @@ const Formulario = ({pacientes, setPacientes}) => {
         setError(false);
     }
     return (
-        <div className='md:w-1/2 lg:w-2/5 mx-5'>
+        <div className='md:w-1/2 lg:w-2/5 mx-2'>
 
             <h2 className='font-black text-3xl text-center'>
                 Seguimiento pacientes
