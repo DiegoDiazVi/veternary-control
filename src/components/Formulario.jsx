@@ -1,6 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState} from 'react'
+
 
 const Formulario = () => {
+    const [nombre, setNombre]           = useState('');
+    const [propieatrio, setPropieatrio] = useState('');
+    const [email, setEmail]             = useState('');
+    const [fecha, setFecha]             = useState('');
+    const [sintomas, setSintomas]       = useState('');
+
+
+
+
     return (
         <div className='md:w-1/2 lg:w-2/5'>
 
@@ -25,6 +35,8 @@ const Formulario = () => {
                         type='text'
                         placeholder='Nombre de la mascota'
                         className='border-2 w-full p-2 mt-2 rounded-md placeholder-gray-400'
+                        value={nombre}
+                        onChange={(e) => setNombre(e.target.value)}
                     />
                 </div>
                 <div className='mb-5'>
@@ -36,6 +48,8 @@ const Formulario = () => {
                         type='text'
                         placeholder='Nombre del propietario'
                         className='border-2 w-full p-2 mt-2 rounded-md placeholder-gray-400'
+                        value={propieatrio}
+                        onChange={(e) => setPropieatrio(e.target.value)}
                     />
                 </div>
                 <div className='mb-5'>
@@ -47,6 +61,8 @@ const Formulario = () => {
                         type='email'
                         placeholder='Correo electronico'
                         className='border-2 w-full p-2 mt-2 rounded-md placeholder-gray-400'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
                 <div className='mb-5'>
@@ -57,6 +73,8 @@ const Formulario = () => {
                         id='date'
                         type='date'
                         className='border-2 w-full p-2 mt-2 rounded-md placeholder-gray-400'
+                        value={fecha}
+                        onChange={(e) => setFecha(e.target.value)}
                     />
                 </div>
                 <div className='mb-5'>
@@ -67,6 +85,8 @@ const Formulario = () => {
                         id='sintomas'
                         className='border-2 w-full p-2 mt-2 rounded-md placeholder-gray-400'
                         placeholder='Describe los sintomas'
+                        value={sintomas}
+                        onChange={(e) => setSintomas(e.target.value)}
                     />
                 </div>
 
