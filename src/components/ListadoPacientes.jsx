@@ -1,7 +1,7 @@
 import React from 'react'
 import Paciente from './Paciente'
 
-const ListadoPacientes = ({pacientes}) => {
+const ListadoPacientes = ({pacientes, setPaciente}) => {
 
     return (
         <div className='md:w-1/2 lg:w-3/5 md:h-screen overflow-auto '>
@@ -15,9 +15,17 @@ const ListadoPacientes = ({pacientes}) => {
                     Administra tus {''}
                     <span className='text-indigo-600 font-bold '>Pacientes y Citas</span>
                 </p>
+                {/*
+                  **Metodo que itera y pinta el state de pacientes
+                  **enviando las props al compoennte paciente
+                 */}
                 {pacientes.map( paciente => {
                     return (
-                        <Paciente key={paciente.id} paciente={paciente}/>
+                        <Paciente
+                            key={paciente.id}
+                            paciente={paciente}
+                            setPaciente={setPaciente}
+                        />
                     )
                 })}
                 </>

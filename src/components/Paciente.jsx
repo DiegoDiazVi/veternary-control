@@ -1,6 +1,12 @@
 import React from 'react'
 
-const Paciente = ({paciente}) => {
+
+/*
+ ** componente que recibe como props el state del paciente que
+ ** quiero renderizar y el modificador del state del paciende
+ ** que voy a editar
+ */
+const Paciente = ({paciente, setPaciente}) => {
     const { nombre, propieatrio, email, fecha,  sintomas } = paciente;
     return (
         <div className='mx-2 my-5 bg-white shadow-md px-5 py-10 rounded-lg'>
@@ -28,6 +34,7 @@ const Paciente = ({paciente}) => {
                 <button
                     type='button'
                     className='py-2 px-10 bg-indigo-600 hover:bg-indigo-800 text-white font-bold uppercase rounded-md'
+                    onClick={() => setPaciente(paciente)}
                 >
                     Editar
                 </button>
