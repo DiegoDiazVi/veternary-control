@@ -6,8 +6,14 @@ import React from 'react'
  ** quiero renderizar y el modificador del state del paciende
  ** que voy a editar
  */
-const Paciente = ({paciente, setPaciente}) => {
-    const { nombre, propieatrio, email, fecha,  sintomas } = paciente;
+const Paciente = ({paciente, setPaciente, eliminarPaciente}) => {
+    const { nombre, propieatrio, email, fecha,  sintomas, id } = paciente;
+
+    const handleEliminar = () => {
+        const respuesta = confirm('Deseas borrar este paciente ?')
+        respuesta && eliminarPaciente(id);
+    }
+
     return (
         <div className='mx-2 my-5 bg-white shadow-md px-5 py-10 rounded-lg'>
             <p className='font-bold mb-3 text-gray-700 uppercase'>
@@ -41,6 +47,7 @@ const Paciente = ({paciente, setPaciente}) => {
                 <button
                     type='button'
                     className='py-2 px-10 bg-red-600 hover:bg-red-800 text-white font-bold uppercase rounded-md'
+                    onClick={handleEliminar}
                 >
                     Eliminar
                 </button>
