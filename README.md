@@ -23,7 +23,6 @@ $ npm run build
 
 ```shell
 $ yarn install
-
 $ yarn run dev
 $ yarn run build
 ```
